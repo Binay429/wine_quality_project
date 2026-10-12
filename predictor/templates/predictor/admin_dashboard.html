@@ -1,0 +1,64 @@
+{% extends "predictor/base.html" %}
+{% block title %}Admin Dashboard — Wine Quality Predictor{% endblock %}
+{% block content %}
+<h4 class="mb-3">Administrator Dashboard</h4>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Registered Users</h6>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Total Predictions</h6>
+                <h2>{{ total_predictions }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5>Registered Users</h5>
+<div class="card shadow-sm mb-4">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead><tr><th>Username</th><th>Email</th><th>Staff</th><th>Joined</th></tr></thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{% if u.is_staff %}<span class="badge bg-success">Yes</span>{% else %}<span class="badge bg-secondary">No</span>{% endif %}</td>
+                    <td>{{ u.date_joined|date:"Y-m-d" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h5>Prediction Records</h5>
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead><tr><th>User</th><th>Date</th><th>Predicted Quality</th><th>Model</th></tr></thead>
+            <tbody>
+                {% for prediction in predictions %}
+                <tr>
+                    <td>{{ prediction.user.username }}</td>
+                    <td>{{ prediction.created_at|date:"Y-m-d H:i" }}</td>
+                    <td><span class="badge bg-secondary">{{ prediction.predicted_quality }}</span></td>
+                    <td>{{ prediction.model_name }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="text-center text-muted py-4">No predictions recorded yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

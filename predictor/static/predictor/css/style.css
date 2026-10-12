@@ -1,0 +1,48 @@
+:root {
+    --wine: #722F37;
+    --wine-dark: #4a1e24;
+    --wine-light: #f7ecec;
+}
+
+body {
+    background-color: #faf7f5;
+}
+
+.wine-navbar {
+    background-color: var(--wine);
+}
+
+.btn-wine {
+    background-color: var(--wine);
+    border-color: var(--wine);
+    color: #fff;
+}
+
+.btn-wine:hover {
+    background-color: var(--wine-dark);
+    border-color: var(--wine-dark);
+    color: #fff;
+}
+
+.card-wine-header {
+    background-color: var(--wine);
+    color: #fff;
+}
+
+.badge-quality {
+    font-size: 1.75rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--wine);
+}
+
+.table thead {
+    background-color: var(--wine-light);
+}
+
+a {
+    color: var(--wine);
+}
+
+a:hover {
+    color: var(--wine-dark);
+}

@@ -1,0 +1,41 @@
+{% extends "predictor/base.html" %}
+{% block title %}Prediction Result — Wine Quality Predictor{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card shadow-sm text-center">
+            <div class="card-header card-wine-header">
+                <h5 class="mb-0">Prediction Result</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Predicted wine quality score (model: {{ prediction.model_name }})</p>
+                <span class="badge rounded-pill badge-quality">{{ prediction.predicted_quality }}</span>
+
+                {% if confidence %}
+                    <div class="mt-4">
+                        <h6>Class probabilities</h6>
+                        <table class="table table-sm">
+                            <thead><tr><th>Quality class</th><th>Probability</th></tr></thead>
+                            <tbody>
+                                {% for cls, prob in confidence.items %}
+                                <tr>
+                                    <td>{{ cls }}</td>
+                                    <td>{{ prob }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+
+                <hr>
+                <p class="small text-muted mb-1">Submitted on {{ prediction.created_at }}</p>
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    <a href="{% url 'predict' %}" class="btn btn-outline-secondary">New Prediction</a>
+                    <a href="{% url 'user_dashboard' %}" class="btn btn-wine">View My Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{
+  "model_name": "Random Forest",
+  "uses_scaler": false,
+  "feature_order": [
+    "fixed acidity",
+    "volatile acidity",
+    "citric acid",
+    "residual sugar",
+    "chlorides",
+    "free sulfur dioxide",
+    "total sulfur dioxide",
+    "density",
+    "pH",
+    "sulphates",
+    "alcohol"
+  ],
+  "classes": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "metrics": {
+    "Logistic Regression": {
+      "accuracy": 0.6245,
+      "macro_precision": 0.2864,
+      "macro_recall": 0.2874,
+      "macro_f1": 0.2848,
+      "macro_roc_auc": 0.8096
+    },
+    "Random Forest": {
+      "accuracy": 0.7118,
+      "macro_precision": 0.3586,
+      "macro_recall": 0.3426,
+      "macro_f1": 0.3454,
+      "macro_roc_auc": 0.8336
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.6594,
+      "macro_precision": 0.3224,
+      "macro_recall": 0.3214,
+      "macro_f1": 0.3205,
+      "macro_roc_auc": 0.7661
+    }
+  },
+  "random_state": 42,
+  "test_size": 0.2
+}
